@@ -11,19 +11,19 @@ public class MaxHeap extends Heap {
     int index = 0;
     while (hasLeftChild(index)) { // only need to check for left because if there's no leftChild there will never
                                   // be a right child
-      int smallerChildIndex = getLeftChildIndex(index);
+      int greaterChildIndex = getLeftChildIndex(index);
 
       if (hasRightChild(index)) {
         int rightChildIndex = getRightChildIndex(index);
-        if (this.getArr()[rightChildIndex] < this.getArr()[smallerChildIndex]) {
-          smallerChildIndex = rightChildIndex;
+        if (this.getArr()[rightChildIndex] > this.getArr()[greaterChildIndex]) {
+          greaterChildIndex = rightChildIndex;
         }
       }
-      if (this.getArr()[index] < this.getArr()[smallerChildIndex]) {
+      if (this.getArr()[index] >= this.getArr()[greaterChildIndex]) {
         break;
       } else {
-        swap(index, smallerChildIndex);
-        index = smallerChildIndex;
+        swap(index, greaterChildIndex);
+        index = greaterChildIndex;
       }
     }
   }
@@ -33,7 +33,7 @@ public class MaxHeap extends Heap {
     int index = this.getSize() - 1;
     while (hasParent(index)) {
       int parentIndex = getParentIndex(index);
-      if (this.getArr()[index] < this.getArr()[parentIndex]) {
+      if (this.getArr()[index] > this.getArr()[parentIndex]) {
         swap(index, parentIndex);
       } else {
         break;

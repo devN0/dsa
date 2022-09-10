@@ -19,7 +19,7 @@ public class MinHeap extends Heap {
           smallerChildIndex = rightChildIndex;
         }
       }
-      if (this.getArr()[index] < this.getArr()[smallerChildIndex]) {
+      if (this.getArr()[index] <= this.getArr()[smallerChildIndex]) {
         break;
       } else {
         swap(index, smallerChildIndex);

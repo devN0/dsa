@@ -31,10 +31,6 @@ public abstract class Heap {
     this.arr = arr;
   }
 
-  protected void updateArr(int index, int value) {
-    this.arr[index] = value;
-  }
-
   protected int getLeftChildIndex(int parentIndex) {
     return (2 * parentIndex + 1);
   }
