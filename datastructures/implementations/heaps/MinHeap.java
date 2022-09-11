@@ -22,7 +22,11 @@ public class MinHeap extends Heap {
       if (this.getArr()[index] <= this.getArr()[smallerChildIndex]) {
         break;
       } else {
-        swap(index, smallerChildIndex);
+        try {
+          swap(index, smallerChildIndex);
+        } catch (IndexOutOfBoundsException e) {
+          e.printStackTrace();
+        }
         index = smallerChildIndex;
       }
     }
@@ -34,7 +38,11 @@ public class MinHeap extends Heap {
     while (hasParent(index)) {
       int parentIndex = getParentIndex(index);
       if (this.getArr()[index] < this.getArr()[parentIndex]) {
-        swap(index, parentIndex);
+        try {
+          swap(index, parentIndex);
+        } catch (IndexOutOfBoundsException e) {
+          e.printStackTrace();
+        }
       } else {
         break;
       }

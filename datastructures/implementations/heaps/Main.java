@@ -20,7 +20,7 @@ public class Main {
       System.out.println(minHeap.poll());
       System.out.println(minHeap.poll());
       System.out.println(minHeap.poll());
-    } catch (Exception e) {
+    } catch (IllegalStateException e) {
       e.printStackTrace();
     }
 

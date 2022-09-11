@@ -55,14 +55,13 @@ public abstract class Heap {
     return (getParentIndex(index) >= 0);
   }
 
-  protected boolean swap(int index1, int index2) {
+  protected void swap(int index1, int index2) throws IndexOutOfBoundsException {
     if (index1 < 0 || index1 >= size || index2 < 0 || index2 >= size) {
-      return false;
+      throw new IndexOutOfBoundsException();
     } else {
       int temp = arr[index1];
       arr[index1] = arr[index2];
       arr[index2] = temp;
-      return true;
     }
   }
 
@@ -73,19 +72,23 @@ public abstract class Heap {
     }
   }
 
-  public int peek() throws Exception {
+  public int peek() throws IllegalStateException {
     if (size == 0) {
       throw new IllegalStateException();
     }
     return arr[0];
   }
 
-  public int poll() throws Exception {
+  public int poll() throws IllegalStateException {
     if (size == 0) {
       throw new IllegalStateException();
     }
     int temp = arr[0];
-    swap(0, size - 1);
+    try {
+      swap(0, size - 1);
+    } catch (IndexOutOfBoundsException e) {
+      e.printStackTrace();
+    }
     size--;
     heapifyDown();
     return temp;

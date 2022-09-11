@@ -22,7 +22,11 @@ public class MaxHeap extends Heap {
       if (this.getArr()[index] >= this.getArr()[greaterChildIndex]) {
         break;
       } else {
-        swap(index, greaterChildIndex);
+        try {
+          swap(index, greaterChildIndex);
+        } catch (IndexOutOfBoundsException e) {
+          e.printStackTrace();
+        }
         index = greaterChildIndex;
       }
     }
@@ -34,7 +38,11 @@ public class MaxHeap extends Heap {
     while (hasParent(index)) {
       int parentIndex = getParentIndex(index);
       if (this.getArr()[index] > this.getArr()[parentIndex]) {
-        swap(index, parentIndex);
+        try {
+          swap(index, parentIndex);
+        } catch (IndexOutOfBoundsException e) {
+          e.printStackTrace();
+        }
       } else {
         break;
       }
